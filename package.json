@@ -1,0 +1,68 @@
+{
+  "name": "ecommerce-shopping-cart-microservice",
+  "version": "1.0.0",
+  "description": "A shopping cart backend microservice for e-commerce application.",
+  "main": "server.ts",
+  "scripts": {
+    "clean": "rimraf build/*",
+    "build": "npm run clean && npx tsc",
+    "start": "node build/server.js",
+    "postinstall": "tsc",
+    "watch-node": "nodemon build/server.js",
+    "watch-ts": "tsc -w",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/server.js\"",
+    "test": "jest --runInBand --force-exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mamun-swe/Ecommerce-shopping-cart-microservice.git"
+  },
+  "keywords": [
+    "ShoppingCartMicroservice",
+    "cart",
+    "service",
+    "RESTAPI",
+    "MongoDB",
+    "Nodejs",
+    "Expressjs",
+    "Typescript"
+  ],
+  "author": "Abdullah Al Mamun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mamun-swe/Ecommerce-shopping-cart-microservice/issues"
+  },
+  "homepage": "https://github.com/Mamun-swe/Ecommerce-shopping-cart-microservice#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.1.1",
+    "mongoose": "^6.5.3",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
+    "@types/jest": "^28.1.8",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.3",
+    "concurrently": "^7.3.0",
+    "jest": "^28.1.3",
+    "nocache": "^3.0.4",
+    "nodemon": "^2.0.19",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
