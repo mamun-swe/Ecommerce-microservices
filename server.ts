@@ -3,7 +3,7 @@ import { cpus } from "os"
 import process from "process"
 import cluster from "cluster"
 import { app } from "./src/app"
-// import { databaseConnection } from "./src/config/db.config"
+import { dbConnection } from "./src/config/db.config"
 
 const numCPUs = cpus().length
 const port: any = process.env.APP_PORT || 5000
@@ -24,7 +24,7 @@ if (cluster.isMaster) {
 /* Start app to specific PORT & establish database connection */
 else {
     app.listen(port, () => {
-        // databaseConnection()
+        dbConnection()
         console.log(`[server]: Server is running at http://localhost:${port}`)
     })
 }
