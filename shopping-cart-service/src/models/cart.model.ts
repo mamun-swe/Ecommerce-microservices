@@ -29,4 +29,4 @@ const cartSchema: Schema = new Schema<ICart>({
     timestamps: true
 })
 
-export const Cart = model("Cart", cartSchema)
+export const Cart = model<ICart>("Cart", cartSchema)

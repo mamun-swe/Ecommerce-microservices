@@ -1,10 +1,10 @@
 
 import { Cart } from "../models/cart.model"
-import { ICart } from "../types/cart.types"
+import { ICart, ICartCreate } from "../types/cart.types"
 
 
 /* Find specific resource for specific customer */
-const findOne = async ({ customer, cartId }: { customer: string, cartId: string }) => {
+const findOne = async ({ customer, cartId }: { customer: string, cartId: string }): Promise<ICart | null> => {
     return await Cart.findOne({
         $and: [
             { _id: cartId },
@@ -15,13 +15,13 @@ const findOne = async ({ customer, cartId }: { customer: string, cartId: string 
 
 
 /* Find all resources */
-const findAll = async ({ customer }: { customer: string }) => {
+const findAll = async ({ customer }: { customer: string }): Promise<ICart[] | []> => {
     return await Cart.find({ customer })
 }
 
 
 /* Create new resource */
-const createCart = async (data: ICart) => {
+const createCart = async (data: ICartCreate): Promise<ICart | null> => {
     const newCart = new Cart({
         customer: data.customer,
         product: data.product,
@@ -36,7 +36,7 @@ const createCart = async (data: ICart) => {
 
 
 /* Find specific resource and increment quantity */
-const findOneAndIncQuantity = async ({ customer, cartId }: { customer: string, cartId: string }) => {
+const findOneAndIncQuantity = async ({ customer, cartId }: { customer: string, cartId: string }): Promise<ICart | null> => {
     return await Cart.findOneAndUpdate(
         {
             $and: [
@@ -50,7 +50,7 @@ const findOneAndIncQuantity = async ({ customer, cartId }: { customer: string, c
 
 
 /* Find specific resource and decrement quantity */
-const findOneAndDescQuantity = async ({ customer, cartId }: { customer: string, cartId: string }) => {
+const findOneAndDescQuantity = async ({ customer, cartId }: { customer: string, cartId: string }): Promise<ICart | null> => {
     return await Cart.findOneAndUpdate(
         {
             $and: [
@@ -64,7 +64,7 @@ const findOneAndDescQuantity = async ({ customer, cartId }: { customer: string, 
 
 
 /* Delete specific resource */
-const findOneAndDestroy = async ({ customer, cartId }: { customer: string, cartId: string }) => {
+const findOneAndDestroy = async ({ customer, cartId }: { customer: string, cartId: string }): Promise<ICart | null> => {
     return await Cart.findOneAndDelete(
         {
             $and: [
@@ -77,7 +77,7 @@ const findOneAndDestroy = async ({ customer, cartId }: { customer: string, cartI
 
 
 /* Find product by specific customer */
-const findOneByProductId = async ({ customer, product }: { customer: string, product: string }) => {
+const findOneByProductId = async ({ customer, product }: { customer: string, product: string }): Promise<ICart | null> => {
     return await Cart.findOne({
         $and: [
             { product },

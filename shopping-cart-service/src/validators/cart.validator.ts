@@ -24,23 +24,6 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
                 },
             }
         ],
-        customer: [
-            { type: 'string', required: true, message: 'Customer id is required.' },
-            {
-                validator(rule: any, value: any, callback: any, source: any, options: any) {
-                    const errors: any = [];
-                    if (!validMongooseId(value)) {
-                        errors.push({
-                            message: "Customer id isn't valid.",
-                            fieldValue: value,
-                            field: "customer"
-                        })
-                    }
-
-                    return errors
-                },
-            }
-        ],
         quantity: {
             type: 'number',
             required: true
