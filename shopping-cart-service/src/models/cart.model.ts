@@ -13,7 +13,7 @@ const cartSchema: Schema = new Schema<ICart>({
     },
     quantity: {
         type: Number,
-        required: true
+        default: 1
     },
     variation: {
         name: {
