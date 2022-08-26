@@ -1,0 +1,25 @@
+{
+  "name": "coupon-service",
+  "version": "1.0.0",
+  "description": "A coupon backend microservice for e-commerce application.",
+  "main": "server.ts",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mamun-swe/Ecommerce-microservices/coupon-service"
+  },
+  "keywords": [
+    "ShoppingCartMicroservice",
+    "cart",
+    "service",
+    "RESTAPI",
+    "MongoDB",
+    "Nodejs",
+    "Expressjs",
+    "Typescript"
+  ],
+  "author": "Abdullah Al Mamun",
+  "license": "ISC"
+}
