@@ -9,11 +9,13 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const logging_middleware_1 = require("./src/middleware/logging.middleware");
 const proxy_middleware_1 = require("./src/middleware/proxy.middleware");
+const authenticate_middleware_1 = require("./src/middleware/authenticate.middleware");
 const routes_1 = require("./src/routes");
 exports.app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 (0, logging_middleware_1.setupLogging)(exports.app);
 (0, proxy_middleware_1.setupProxies)(exports.app, routes_1.ROUTES);
+(0, authenticate_middleware_1.setupAuthentication)(exports.app, routes_1.ROUTES);
 /* Root route */
 exports.app.get("/", (req, res, next) => {
     const services = [];
