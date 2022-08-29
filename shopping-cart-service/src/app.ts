@@ -20,16 +20,24 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
-/* Base route */
+/* Root route */
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
-    res.send("Welcome to app.")
+    res.send("Welcome to app shopping cart service.")
 })
 
 
 /* Integrate API routes */
 app.use("/api/v1", router)
 
+/* Handelling 404 route */
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.status(404).json({
+        status: false,
+        errors: {
+            message: "Sorry, Route not found."
+        }
+    })
+})
 
 /* Error handelling middleware registration */
 app.use(AppErrorHandeller)
