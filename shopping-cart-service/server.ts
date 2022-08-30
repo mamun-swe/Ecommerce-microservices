@@ -25,6 +25,6 @@ if (cluster.isMaster) {
 else {
     app.listen(port, () => {
         dbConnection()
-        console.log(`[server]: Server is running at http://localhost:${port}`)
+        console.log(`Shopping cart service is running at http://localhost:${port}`)
     })
 }
