@@ -4,7 +4,6 @@ exports.ROUTES = void 0;
 exports.ROUTES = [
     {
         url: "/shopping-cart",
-        auth: true,
         proxy: {
             target: "http://localhost:5000/",
             changeOrigin: true,
