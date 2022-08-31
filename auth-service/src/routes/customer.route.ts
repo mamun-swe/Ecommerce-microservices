@@ -7,8 +7,8 @@ import * as AccountController from "../controllers/customer/account.controller";
 export const customerRouter = express.Router();
 
 /* Authentication routes */
-customerRouter.post("/auth/register", validators.customer.create, AuthController.register);
-customerRouter.post("/auth/login", validators.customer.login, AuthController.login);
+customerRouter.post("/register", validators.customer.create, AuthController.register);
+customerRouter.post("/login", validators.customer.login, AuthController.login);
 // cartRouter.put("/:id", validator.mongooseId.isValid, CartController.incQuantity)
 // cartRouter.put("/:id", validator.mongooseId.isValid, CartController.descQuantity)
 // cartRouter.delete("/:id", validator.mongooseId.isValid, CartController.destroy)
