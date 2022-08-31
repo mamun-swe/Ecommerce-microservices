@@ -7,7 +7,7 @@ import {
 
 /* find specific resource by Id */
 const findById = async (id: string): Promise<ICustomer | null> => {
-  return await Models.Customer.findById(id).populate(
+  return await Models.Customer.findById(id, { password: 1 }).populate(
     "blocked_by",
     "name email profile_image"
   );
@@ -15,7 +15,7 @@ const findById = async (id: string): Promise<ICustomer | null> => {
 
 /* find specific resource by key */
 const findOne = async (params: any): Promise<ICustomer | null> => {
-  return await Models.Customer.findOne({ ...params }).populate(
+  return await Models.Customer.findOne({ ...params }, { password: 1 }).populate(
     "blocked_by",
     "name email profile_image"
   );

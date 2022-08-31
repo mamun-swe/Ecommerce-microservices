@@ -1,4 +1,4 @@
-import { accessToken } from "./../../helper/index";
+import { accessToken, comparePassword } from "./../../helper/index";
 import { NextFunction, Request, Response } from "express";
 import {
   encryptPassword,
@@ -61,6 +61,72 @@ export const register = async (
       await HttpSuccessResponse({
         status: true,
         message: "Account created.",
+        token: jwtAccessToken,
+      })
+    );
+  } catch (error: any) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+/* Login to account */
+export const login = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email, password } = req.body;
+
+    /* find available account */
+    const availableAccount = await services.customer.findOne({ email });
+    if (!availableAccount) {
+      return res.status(404).json(
+        await HttpErrorResponse({
+          status: false,
+          errors: [
+            {
+              field: "credential",
+              message: "Invalid credentials.",
+            },
+          ],
+        })
+      );
+    }
+
+    /* compare password */
+    const isPasswordMatch = await comparePassword(
+      password,
+      availableAccount.password
+    );
+    if (!isPasswordMatch) {
+      return res.status(404).json(
+        await HttpErrorResponse({
+          status: false,
+          errors: [
+            {
+              field: "credential",
+              message: "Invalid credentials.",
+            },
+          ],
+        })
+      );
+    }
+
+    /* generate access token */
+    const jwtAccessToken = await accessToken({
+      id: availableAccount._id.toString(),
+      name: availableAccount.name,
+      role: availableAccount.role,
+    });
+
+    res.status(200).json(
+      await HttpSuccessResponse({
+        status: true,
+        message: "Successfully loggedin.",
         token: jwtAccessToken,
       })
     );

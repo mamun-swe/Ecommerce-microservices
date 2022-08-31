@@ -33,14 +33,14 @@ export interface ICustomerCreation {
 
 export interface ICustomerUpdate {
   name: string;
-  gender: null | "Male" | "Female" | "Other";
-  dob: Date | null;
-  present_address: string | null;
-  permanent_address: string | null;
-  post_code: string | null;
-  post_office: string | null;
-  upazila: string | null;
-  division: string | null;
-  city: string | null;
-  country: string | null;
+  gender: "Male" | "Female" | "Other";
+  dob: Date;
+  present_address: string;
+  permanent_address: string;
+  post_code: string;
+  post_office: string;
+  upazila: string;
+  division: string;
+  city: string;
+  country: string;
 }

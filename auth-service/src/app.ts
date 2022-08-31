@@ -31,9 +31,7 @@ app.use("/api/v1", router);
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).json({
     status: false,
-    errors: {
-      message: "Sorry, Route not found.",
-    },
+    errors: [{ field: "server", message: "Sorry, Route not found." }],
   });
 });
 
