@@ -1,14 +1,14 @@
-
 export interface IRoutes {
-    url: string,
-    proxy: {
-        target: string,
-        changeOrigin: boolean,
-        pathRewrite: any,
-    }
+  name: string;
+  url: string;
+  proxy: {
+    target: string;
+    changeOrigin: boolean;
+    pathRewrite: any;
+  };
 }
 
-
 export interface IService {
-    service_path: string,
+  service_name: string;
+  service_path: string;
 }
